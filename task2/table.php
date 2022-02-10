@@ -26,7 +26,7 @@ $users = [
     (object)[
         'id' => 2,
         'name' => 'mohamed',
-        "gender" => (object)[
+        "gender" =>(object)[
             'gender' => 'm'
         ],
         'hobbies' => [
@@ -52,9 +52,7 @@ $users = [
             'home' => 'drawing'
         ],
 
-    ],
- 
-    
+    ], 
 ];
 
 ?>
@@ -90,13 +88,13 @@ $users = [
         </thead>
         <tbody>
             <?php
-    foreach ($users as $index=>$user) {?>
+    foreach ($users as $index=>$user) { if (is_object($user)){?>
       
         <tr class="mt-3">
       <?php
        foreach ($user as $key=>$value) {
            if($key=="gender")
-           {
+           { if(is_object($user->$key)){
             if($user->$key->$key == 'm')
             {
                 $value="Male";
@@ -106,13 +104,23 @@ $users = [
                 $value="Female";
                 echo "<td> $value</td>";
             }
+        }
+        else
+        {
+            echo "<td>  </td>";
+        }
            }
            elseif($key=="hobbies")
            {
                ?>
                <td class="mt-3"> <?php
-            foreach($user->$key as $index=>$hobby ){
+            foreach($user->$key as $index=>$hobby ){if (is_array($user->$key) && !is_object($hobby)){
                 echo "$hobby  , ";
+            }
+            else
+        {
+            echo "<td>  </td>";
+        }
             }
             ?>
             </td>
@@ -122,8 +130,13 @@ $users = [
            {
             ?>
             <td  class="mt-3"> <?php
-         foreach($user->$key as $key=>$activity ){
-             echo "In $key => $activity , <br>";
+         foreach($user->$key as $key2=>$activity ){if (is_array($user->$key)  && !is_object($activity)) {
+             echo "In $key2 => $activity , <br>";
+         }
+         else
+        {
+            echo "<td>  </td>";
+        }
          }
          ?>
          </td>
@@ -137,7 +150,7 @@ $users = [
        ?>
        </tr>
       
-          <?php }?>
+          <?php }}?>
            
         </tbody>
     </table>
