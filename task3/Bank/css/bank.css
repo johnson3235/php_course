@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Teko&family=Yanone+Kaffeesatz:wght@300&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    text-transform: capitalize;
+
+}
+
+:root {
+    --main-color: #100774;
+    --text-color: #fe7970;
+    --text2-color: #212529;
+}
+
+/*
+body{
+
+    font-family: 'Caveat', cursive;
+    font-family: 'Teko', sans-serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+*/
+
+ .navbar{
+    background-color: var(--main-color);
+    color: var(--text-color);
+ }
+
+.btn{
+    color: #fe7970;
+    background-color: #100774;
+    transition: .3s;
+    
+}
+
+.btn:hover{
+    color: var(--main-color);
+    background-color:  var(--text-color);
+    
+}
